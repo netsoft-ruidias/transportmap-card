@@ -105,7 +105,10 @@ class TransportMapCard extends HTMLElement {
                 text-align: center;
                 margin: 10px;
                 font-size: var(--material-h6-font-size);
-            }                         
+            } 
+            .stats > div > div{
+                font-size: var(--material-small-font-size);
+            }                                     
             .timeline {
                 display: flex;
                 flex-direction: row;
@@ -126,6 +129,7 @@ class TransportMapCard extends HTMLElement {
                 flex-direction: column;
                 justify-content: space-around;
                 align-content: center;
+                flex-wrap: wrap;
             }
             .stops::after {
                 background-color: var(--primary-color);
@@ -142,11 +146,13 @@ class TransportMapCard extends HTMLElement {
                 color: var(--state-icon-color);
                 width: 25px;
                 height: 25px;
-                margin: 10px 0px;
+                margin: 15px 0px;
                 text-align: center;
                 z-index: 100;
             }
             .stop-info {
+                display: flex;
+                align-items: center;  
                 height: 30px;
                 text-wrap: nowrap;
             }            
@@ -164,9 +170,9 @@ class TransportMapCard extends HTMLElement {
     }
 
     renderStats = (data) =>  `
-        <div>From:<br> ${data.departureStation} </div>    
-        <div>${data.travelDate}<br>➜</div>
-        <div>To:<br>${data.arrivalStation}</div>
+        <div>${data.departureStation} </div>    
+        <div><div>${data.travelDate}</div>➜</div>
+        <div>${data.arrivalStation}</div>
     `;
 
     renderTimeline = (data) => {
