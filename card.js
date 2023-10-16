@@ -1,4 +1,8 @@
-console.log(`%ctransportemap-card\n%cVersion: ${'0.0.5'}`, 'color: rebeccapurple; font-weight: bold;', '');
+console.info(
+    `%c  Transport Map Card  %c ${'v0.0.6'} `,
+    'color: orange; font-weight: bold; background: black',
+    'color: white; font-weight: bold; background: dimgray',
+);
 
 const sampleData = {
     "travelDate": "2023-10-16",
@@ -59,11 +63,13 @@ class TransportMapCard extends HTMLElement {
         const stateStr = state ? state.state : "unavailable";
 
         this.content.innerHTML = `
-        with sampleData
-        <br><br>
-        The state of ${entityId} is ${stateStr}!
-        <br><br>
-        <img src="http://via.placeholder.com/350x150">
+            with sampleData
+            <br><br>
+            The state of ${entityId} is ${stateStr}!
+            <br><br>
+            travelDate: ${sampleData.travelDate} <br>
+            departureStation: ${sampleData.departureStation} <br>
+            arrivalStation: ${sampleData.arrivalStation}
         `;
     }
 
