@@ -1,5 +1,5 @@
 console.info(
-    `%c  Transport Map Card  %c ${'v0.0.6'} `,
+    `%c  Transport Map Card  %c ${'v0.0.7'} `,
     'color: orange; font-weight: bold; background: black',
     'color: white; font-weight: bold; background: dimgray',
 );
@@ -51,7 +51,7 @@ class TransportMapCard extends HTMLElement {
         // Initialize the content if it's not there yet.
         if (!this.content) {
         this.innerHTML = `
-            <ha-card header="Example-card">
+            <ha-card header="Transport Card">
             <div class="card-content"></div>
             </ha-card>
         `;
@@ -87,6 +87,14 @@ class TransportMapCard extends HTMLElement {
     getCardSize() {
         return 3;
     }
+
+    static getConfigElement() {
+        return document.createElement("transportmap-card-editor");
+    }
+
+    static getStubConfig() {
+        return { entity: "sun.sun" }
+    }    
 }
   
 customElements.define("transportmap-card", TransportMapCard);

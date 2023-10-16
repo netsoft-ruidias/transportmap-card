@@ -17,7 +17,7 @@ class TransportMapCardEditor extends LitElement {
   window.customCards = window.customCards || [];
   window.customCards.push({
     type: "transportmap-card",
-    name: "Transport Map",
+    name: "Transport Map Card",
     preview: true,
     description: "A Transport Map for Home Assistant",
   });
