@@ -1,4 +1,4 @@
-console.log(`%ctransportemap-card\n%cVersion: ${'0.0.2'}`, 'color: rebeccapurple; font-weight: bold;', '');
+console.log(`%ctransportemap-card\n%cVersion: ${'0.0.3'}`, 'color: rebeccapurple; font-weight: bold;', '');
 
 // const sampleData = {
 //     "travelDate": "2023-10-16",
@@ -201,13 +201,13 @@ class TransportMapCard extends HTMLElement {
         return 7;
     }
 
-    static getConfigElement() {
-        return document.createElement("transportmap-card-editor");
-    }
+    // static getConfigElement() {
+    //     return document.createElement("transportmap-card-editor");
+    // }
 
-    static getStubConfig() {
-        return { entity: "sun.sun" }
-    }
+    // static getStubConfig() {
+    //     return { entity: "sun.sun" }
+    // }
   }
   
   customElements.define("transportmap-card", TransportMapCard);
