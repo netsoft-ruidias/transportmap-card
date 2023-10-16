@@ -1,5 +1,5 @@
 console.info(
-    `%c  Transport Map Card  %c ${'v0.0.7'} `,
+    `%c  Transport Map Card  %c ${'v0.0.8'} `,
     'color: orange; font-weight: bold; background: black',
     'color: white; font-weight: bold; background: dimgray',
 );
@@ -45,8 +45,14 @@ const sampleData = {
 }
 
 class TransportMapCard extends HTMLElement {
-    // Whenever the state changes, a new `hass` object is set. Use this to
-    // update your content.
+    
+    setConfig(config) {
+        if (!config.entity) {
+        throw new Error("You need to define an entity");
+        }
+        this.config = config;
+    }
+
     set hass(hass) {
         // Initialize the content if it's not there yet.
         if (!this.content) {
@@ -73,17 +79,6 @@ class TransportMapCard extends HTMLElement {
         `;
     }
 
-    // The user supplied configuration. Throw an exception and Home Assistant
-    // will render an error card.
-    setConfig(config) {
-        if (!config.entity) {
-        throw new Error("You need to define an entity");
-        }
-        this.config = config;
-    }
-
-    // The height of your card. Home Assistant uses this to automatically
-    // distribute all cards over the available columns.
     getCardSize() {
         return 3;
     }
