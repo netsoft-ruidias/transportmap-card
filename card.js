@@ -5,7 +5,7 @@ class TransportMapCard extends HTMLElement {
       // Initialize the content if it's not there yet.
       if (!this.content) {
         this.innerHTML = `
-          <ha-card header="Example-card">
+          <ha-card header="transportmap-card">
             <div class="card-content"></div>
           </ha-card>
         `;
@@ -23,6 +23,14 @@ class TransportMapCard extends HTMLElement {
       `;
     }
   
+    static getConfigElement() {
+        return document.createElement("transportmap-card-editor");
+    }
+
+    static getStubConfig() {
+        return { entity: "sun.sun" }
+    }
+
     // The user supplied configuration. Throw an exception and Home Assistant
     // will render an error card.
     setConfig(config) {
@@ -35,7 +43,7 @@ class TransportMapCard extends HTMLElement {
     // The height of your card. Home Assistant uses this to automatically
     // distribute all cards over the available columns.
     getCardSize() {
-      return 3;
+      return 7;
     }
   }
   
