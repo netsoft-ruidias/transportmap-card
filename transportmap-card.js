@@ -75,6 +75,7 @@ class TransportMapCard extends HTMLElement {
             throw new Error("You need to define an entity");
         }
         const root = this.shadowRoot;
+        if (root.lastChild) root.removeChild(root.lastChild);
         
         const cardConfig = Object.assign({}, config);
 
@@ -94,6 +95,8 @@ class TransportMapCard extends HTMLElement {
 
     set hass(hass) {
         const config = this.config;
+        const root = this.shadowRoot;
+        const card = root.lastChild;
 
         if (!this.content) {
             this.innerHTML = `
