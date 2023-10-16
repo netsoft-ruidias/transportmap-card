@@ -1,5 +1,5 @@
 console.info(
-    `%c  Transport Map Card  %c ${'v0.0.9'} `,
+    `%c  Transport Map Card  %c ${'v0.0.10'} `,
     'color: orange; font-weight: bold; background: black',
     'color: white; font-weight: bold; background: dimgray',
 );
@@ -40,16 +40,23 @@ const sampleData = {
             "duration": "01h21",
             "train": 830,
             "nextStation": "Alvaraes (19:01)"
-        }
-        ,
+        },
         {
-            "service": "IR-A",
-            "departure": "18:49",
-            "arrival": "20:10",
-            "duration": "01h21",
+            "service": "IN",
+            "departure": "20:14",
+            "arrival": "21:18",
+            "duration": "01h04",
             "train": null,
             "nextStation": ""
-        }        
+        },
+        {
+            "service": "IR-A",
+            "departure": "21:08",
+            "arrival": "22:30",
+            "duration": "01h22",
+            "train": null,
+            "nextStation": ""
+        }  
     ]
 }
 
@@ -71,7 +78,7 @@ class TransportMapCard extends HTMLElement {
         // Initialize the content if it's not there yet.
         if (!this.content) {
         this.innerHTML = `
-            <ha-card header="Transport Card">
+            <ha-card header="Transport Map">
             <div class="card-content"></div>
             </ha-card>
         `;
