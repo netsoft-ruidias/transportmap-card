@@ -45,10 +45,15 @@ const sampleData = {
 }
 
 class TransportMapCard extends HTMLElement {
-    
+
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+    }
+
     setConfig(config) {
         if (!config.entity) {
-        throw new Error("You need to define an entity");
+            throw new Error("You need to define an entity");
         }
         this.config = config;
     }
