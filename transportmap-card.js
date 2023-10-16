@@ -1,5 +1,5 @@
 console.info(
-    `%c  Transport Map Card  %c ${'v0.0.8'} `,
+    `%c  Transport Map Card  %c ${'v0.0.9'} `,
     'color: orange; font-weight: bold; background: black',
     'color: white; font-weight: bold; background: dimgray',
 );
