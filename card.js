@@ -1,4 +1,4 @@
-console.log(`%ctransportemap-card\n%cVersion: ${'0.0.1'}`, 'color: rebeccapurple; font-weight: bold;', '');
+console.log(`%ctransportemap-card\n%cVersion: ${'0.0.2'}`, 'color: rebeccapurple; font-weight: bold;', '');
 
 const sampleData = {
     "travelDate": "2023-10-16",
@@ -184,11 +184,17 @@ class TransportMapCard extends HTMLElement {
       this.content.innerHTML = `
         The state of ${entityId} is ${stateStr}!
         <br><br>
-        travelDate: ${sampleData.travelDate} <br>
-        departureStation: ${sampleData.departureStation} <br>
-        arrivalStation: ${sampleData.arrivalStation} <br>
-        outwardTrips: ${sampleData.outwardTrips} <br>
+        <img src="http://via.placeholder.com/350x150">
       `;
+
+    //   this.content.innerHTML = `
+    //     The state of ${entityId} is ${stateStr}!
+    //     <br><br>
+    //     travelDate: ${sampleData.travelDate} <br>
+    //     departureStation: ${sampleData.departureStation} <br>
+    //     arrivalStation: ${sampleData.arrivalStation} <br>
+    //     outwardTrips: ${sampleData.outwardTrips} <br>
+    //   `;
     }
 
     getCardSize() {
