@@ -90,6 +90,7 @@ class TransportMapCard extends HTMLElement {
         const style = document.createElement('style');
 
         content.id = "container";
+        content.className = "card-content";
 
         cardConfig.title ? card.header = cardConfig.title : null;
         card.appendChild(content);
