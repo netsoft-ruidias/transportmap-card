@@ -100,7 +100,12 @@ class TransportMapCard extends HTMLElement {
                 display: flex;
                 flex-direction: row;
                 justify-content: space-around;
-            }             
+            } 
+            .stats > div {
+                text-align: center;
+                margin: 10px;
+                font-size: var(--material-h6-font-size);
+            }                         
             .timeline {
                 display: flex;
                 flex-direction: row;
@@ -120,7 +125,7 @@ class TransportMapCard extends HTMLElement {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-around;
-                position: relative;
+                align-content: center;
             }
             .stops::after {
                 background-color: var(--primary-color);
