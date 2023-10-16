@@ -104,12 +104,11 @@ class TransportMapCard extends HTMLElement {
             travelDate: ${sampleData.travelDate} <br>
             departureStation: ${sampleData.departureStation} <br>
             arrivalStation: ${sampleData.arrivalStation} <br>
+            ${sampleData.outwardTrips.map((data, idx) => 
+                `${data.service} | ${data.departure} | ${data.arrival} | ${data.duration} <br><br>`
+            )}            
         `;
     }
-
-    // ${sampleData.outwardTrips.map((data, idx) => 
-    //     `${data.service} | ${data.departure} | ${data.arrival} | ${data.duration} <br><br>`
-    // )}
 
     getCardSize() {
         return 3;
