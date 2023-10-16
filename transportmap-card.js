@@ -96,25 +96,33 @@ class TransportMapCard extends HTMLElement {
                 display: flex;
                 flex-direction: column;
             }
-            .timeline-content {
-                display: flex;
-                flex-direction: row;
-            }            
             .timeline {
                 display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+            }            
+            .travel {
+                display: flex;
                 flex-direction: column;
+                justify-content: space-around;
                 position: relative;
-                width: 20px;
                 margin: 10px;
+                text-align: center;
             }
-            .timeline::after {
-                background-color: #e17b77;
+            .travel::after {
+                background-color: var(--primary-color);
                 content: '';
                 position: absolute;
                 left: calc(50% - 2px);
                 width: 4px;
                 height: 100%;
-            }            
+            }
+            .travel-stat {
+
+            }
+            .stop {
+                content: 'O';
+            }
         `;
 
         content.id = "container";
@@ -138,7 +146,15 @@ class TransportMapCard extends HTMLElement {
         let timelineContent = ``;
 
         sampleData.outwardTrips.map((data, idx) => 
-            timelineContent += `<div class="timeline">${idx}: ${data.service} | ${data.departure} | ${data.arrival} | ${data.duration} </div>`
+            //timelineContent += `<div class="timeline">${idx}: ${data.service} | ${data.departure} | ${data.arrival} | ${data.duration} </div>`
+            timelineContent += `
+            <div class="travel">
+                <div class="travel-stat">${data.arrival}</div>
+                <div class="stop"></div>
+                <div class="stop"></div>
+                <div class="stop"></div>
+                <div class="travel-stat"> ${data.departure}</div>
+            </div>`
         )
 
         return timelineContent;
@@ -147,35 +163,16 @@ class TransportMapCard extends HTMLElement {
     set hass(hass) {
         const config = this.config;
         const root = this.shadowRoot;
-        //const card = root.lastChild;
 
         const entityId = this.config.entity;
         const state = hass.states[entityId];
         const stateStr = state ? state.state : "unavailable";
 
-        // let cardContent = `
-        //     <div class="timeline"></div>
-        //     <div class="timeline"></div>
-        //     <div class="timeline"></div>
-
-        //     <div>The state of ${entityId} is ${stateStr}!</div>
-            
-        //     <div>travelDate: ${sampleData.travelDate} </div>
-        //     <div>departureStation: ${sampleData.departureStation} </div>
-        //     <div>arrivalStation: ${sampleData.arrivalStation} </div>
-        //     <div>
-        //     ${sampleData.outwardTrips.map((data, idx) => 
-        //         `<div>${idx}: ${data.service} | ${data.departure} | ${data.arrival} | ${data.duration} </div>`
-        //     )}
-        //     </div>         
-        // `;
-        //
-        // root.getElementById('container').innerHTML = cardContent;
         root.getElementById('container').innerHTML = `
             <div class="stats">
                 ${this.renderStats(sampleData)}
             </div>
-            <div class="timeline-content">
+            <div class="timeline">
                 ${this.renderTimeline(sampleData.outwardTrips)}
             </div>
         `;
