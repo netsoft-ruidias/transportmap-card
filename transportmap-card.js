@@ -96,6 +96,11 @@ class TransportMapCard extends HTMLElement {
                 display: flex;
                 flex-direction: column;
             }
+            .stats {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+            }             
             .timeline {
                 display: flex;
                 flex-direction: row;
@@ -128,6 +133,7 @@ class TransportMapCard extends HTMLElement {
             .stop {
                 height: 30px;
                 text-align: center;
+                z-index: 100;
             }
             .stop-info {
                 height: 30px;
@@ -147,9 +153,9 @@ class TransportMapCard extends HTMLElement {
     }
 
     renderStats = (data) =>  `
-        <div>travelDate: ${data.travelDate}</div>
-        <div>departureStation: ${data.departureStation} </div>
-        <div>arrivalStation: ${data.arrivalStation}</div>
+        <div>From:<br> ${data.departureStation} </div>    
+        <div>${data.travelDate}<br>➜</div>
+        <div>To:<br>${data.arrivalStation}</div>
     `;
 
     renderTimeline = (data) => {
