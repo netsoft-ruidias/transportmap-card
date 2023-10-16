@@ -131,6 +131,10 @@ class TransportMapCard extends HTMLElement {
                 height: 100%;
             }            
             .stop {
+                background-color: #fff;
+                border: 3px solid #e17b77;
+                border-radius: 50%;                
+                width: 30px;
                 height: 30px;
                 text-align: center;
                 z-index: 100;
