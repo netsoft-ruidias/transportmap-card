@@ -70,26 +70,28 @@ const sampleData = {
 
 class TransportMapCard extends HTMLElement {
 
-    // constructor() {
-    //     super();
-    //     this.attachShadow({ mode: 'open' });
-    // }
-
     setConfig(config) {
         if (!config.entity) {
             throw new Error("You need to define an entity");
         }
-        this.config = config;
+        const cardConfig = Object.assign({}, config);
+
+        const card = document.createElement('ha-card');
+
+        cardConfig.title ? card.header = cardConfig.title : null;
+        this.config = cardConfig;
     }
 
     set hass(hass) {
+        const config = this.config;
+
         if (!this.content) {
-        this.innerHTML = `
-            <ha-card header="Transport Map">
-            <div class="card-content"></div>
-            </ha-card>
-        `;
-        this.content = this.querySelector("div");
+            this.innerHTML = `
+                <ha-card header="${config.title}">
+                    <div class="card-content"></div>
+                </ha-card>
+            `;
+            this.content = this.querySelector("div");
         }
 
         const entityId = this.config.entity;
