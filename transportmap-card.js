@@ -77,8 +77,16 @@ class TransportMapCard extends HTMLElement {
         const cardConfig = Object.assign({}, config);
 
         const card = document.createElement('ha-card');
+        const content = document.createElement('div');
+        const style = document.createElement('style');
+
+        content.id = "container";
 
         cardConfig.title ? card.header = cardConfig.title : null;
+        card.appendChild(content);
+        card.appendChild(style);
+        root.appendChild(card);
+                
         this.config = cardConfig;
     }
 
@@ -99,15 +107,13 @@ class TransportMapCard extends HTMLElement {
         const stateStr = state ? state.state : "unavailable";
 
         this.content.innerHTML = `
-            with sampleData
-            <br><br>
             The state of ${entityId} is ${stateStr}!
             <br><br>
             travelDate: ${sampleData.travelDate} <br>
             departureStation: ${sampleData.departureStation} <br>
-            arrivalStation: ${sampleData.arrivalStation} <br>
+            arrivalStation: ${sampleData.arrivalStation} <br><br>
             ${sampleData.outwardTrips.map((data, idx) => 
-                `${data.service} | ${data.departure} | ${data.arrival} | ${data.duration} <br><br>`
+                `${idx}: ${data.service} | ${data.departure} | ${data.arrival} | ${data.duration} <br>`
             )}            
         `;
     }
