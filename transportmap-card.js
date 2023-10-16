@@ -1,5 +1,5 @@
 console.info(
-    `%c  Transport Map Card  %c ${'v0.0.10'} `,
+    `%c  Transport Map Card  %c ${'v0.0.11'} `,
     'color: orange; font-weight: bold; background: black',
     'color: white; font-weight: bold; background: dimgray',
 );
@@ -34,6 +34,14 @@ const sampleData = {
             "nextStation": ""
         },
         {
+            "service": "IC",
+            "departure": "07:26",
+            "arrival": "08:34",
+            "duration": "01h08",
+            "train": null,
+            "nextStation": ""
+        },
+        {
             "service": "IR-A",
             "departure": "18:49",
             "arrival": "20:10",
@@ -62,10 +70,10 @@ const sampleData = {
 
 class TransportMapCard extends HTMLElement {
 
-    constructor() {
-        super();
-        this.attachShadow({ mode: 'open' });
-    }
+    // constructor() {
+    //     super();
+    //     this.attachShadow({ mode: 'open' });
+    // }
 
     setConfig(config) {
         if (!config.entity) {
@@ -75,7 +83,6 @@ class TransportMapCard extends HTMLElement {
     }
 
     set hass(hass) {
-        // Initialize the content if it's not there yet.
         if (!this.content) {
         this.innerHTML = `
             <ha-card header="Transport Map">
@@ -97,11 +104,12 @@ class TransportMapCard extends HTMLElement {
             travelDate: ${sampleData.travelDate} <br>
             departureStation: ${sampleData.departureStation} <br>
             arrivalStation: ${sampleData.arrivalStation} <br>
-            ${sampleData.outwardTrips.map((data, idx) => 
-                `${data.service} | ${data.departure} | ${data.arrival} | ${data.duration} <br><br>`
-            )}
         `;
     }
+
+    // ${sampleData.outwardTrips.map((data, idx) => 
+    //     `${data.service} | ${data.departure} | ${data.arrival} | ${data.duration} <br><br>`
+    // )}
 
     getCardSize() {
         return 3;
