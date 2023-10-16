@@ -130,6 +130,7 @@ class TransportMapCard extends HTMLElement {
                 justify-content: space-around;
                 align-content: center;
                 flex-wrap: wrap;
+                position: relative;
             }
             .stops::after {
                 background-color: var(--primary-color);
