@@ -1,4 +1,44 @@
-console.log(`%ctransportemap-card\n%cVersion: ${'0.0.4'}`, 'color: rebeccapurple; font-weight: bold;', '');
+console.log(`%ctransportemap-card\n%cVersion: ${'0.0.5'}`, 'color: rebeccapurple; font-weight: bold;', '');
+
+const sampleData = {
+    "travelDate": "2023-10-16",
+    "departureStation": "Viana do Castelo",
+    "arrivalStation": "Porto - Campanha",
+    "outwardTrips": [
+        {
+            "service": "R|U",
+            "departure": "05:11",
+            "arrival": "07:10",
+            "duration": "01h59",
+            "train": null,
+            "nextStation": ""
+        },
+        {
+            "service": "R|U",
+            "departure": "06:00",
+            "arrival": "08:10",
+            "duration": "02h10",
+            "train": null,
+            "nextStation": ""
+        },
+        {
+            "service": "R",
+            "departure": "06:42",
+            "arrival": "08:20",
+            "duration": "01h38",
+            "train": null,
+            "nextStation": ""
+        },
+        {
+            "service": "IR-A",
+            "departure": "18:49",
+            "arrival": "20:10",
+            "duration": "01h21",
+            "train": 830,
+            "nextStation": "Alvaraes (19:01)"
+        }
+    ]
+}
 
 class TransportMapCard extends HTMLElement {
     // Whenever the state changes, a new `hass` object is set. Use this to
