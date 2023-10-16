@@ -107,7 +107,6 @@ class TransportMapCard extends HTMLElement {
                 justify-content: space-around;
                 position: relative;
                 margin: 10px;
-                text-align: center;
             }
             .travel::after {
                 background-color: var(--primary-color);
@@ -121,7 +120,8 @@ class TransportMapCard extends HTMLElement {
 
             }
             .stop {
-                content: 'O';
+                height: 30px;
+                text-align: center;
             }
         `;
 
@@ -150,12 +150,21 @@ class TransportMapCard extends HTMLElement {
             timelineContent += `
             <div class="travel">
                 <div class="travel-stat">${data.arrival}</div>
-                <div class="stop"></div>
-                <div class="stop"></div>
-                <div class="stop"></div>
+                <div class="stop">O</div>
+                <div class="stop">O</div>
+                <div class="stop">O</div>
                 <div class="travel-stat"> ${data.departure}</div>
             </div>`
         )
+
+        timelineContent += `
+            <div class="travel">
+                <div class="travel-stat"></div>
+                <div class="stop">estação final</div>
+                <div class="stop">estação</div>
+                <div class="stop">origem</div>
+                <div class="travel-stat"></div>
+            </div>`
 
         return timelineContent;
     }
