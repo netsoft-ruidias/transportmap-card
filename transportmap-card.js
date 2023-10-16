@@ -161,9 +161,9 @@ class TransportMapCard extends HTMLElement {
             <div class="travel">
                 <div class="travel-stat">${data.arrival}</div>
                 <div class="stops">
-                    <div class="stop">O</div>
-                    <div class="stop">O</div>
-                    <div class="stop">O</div>
+                    <div class="stop"><ha-icon icon="mdi:train"></ha-icon></div>
+                    <div class="stop"><ha-icon icon="mdi:train"></ha-icon></div>
+                    <div class="stop"><ha-icon icon="mdi:train"></ha-icon></div>
                 </div>
                 <div class="travel-stat"> ${data.departure}</div>
             </div>`
