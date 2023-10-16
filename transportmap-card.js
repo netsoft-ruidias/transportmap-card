@@ -41,6 +41,15 @@ const sampleData = {
             "train": 830,
             "nextStation": "Alvaraes (19:01)"
         }
+        ,
+        {
+            "service": "IR-A",
+            "departure": "18:49",
+            "arrival": "20:10",
+            "duration": "01h21",
+            "train": null,
+            "nextStation": ""
+        }        
     ]
 }
 
@@ -81,9 +90,9 @@ class TransportMapCard extends HTMLElement {
             travelDate: ${sampleData.travelDate} <br>
             departureStation: ${sampleData.departureStation} <br>
             arrivalStation: ${sampleData.arrivalStation} <br>
-            ${sampleData.outwardTrips.map((data, idx) => {
-                `<p>${data.service} | ${data.departure} | ${data.arrival} | ${data.duration}</p>`
-            })}
+            ${sampleData.outwardTrips.map((data, idx) => 
+                `${data.service} | ${data.departure} | ${data.arrival} | ${data.duration} <br><br>`
+            )}
         `;
     }
 
