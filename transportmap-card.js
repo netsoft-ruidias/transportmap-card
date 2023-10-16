@@ -108,21 +108,31 @@ class TransportMapCard extends HTMLElement {
                 position: relative;
                 margin: 10px;
             }
-            .travel::after {
+            .travel-stat {
+
+            }
+            .stops {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                position: relative;
+            }
+            .stops::after {
                 background-color: var(--primary-color);
                 content: '';
                 position: absolute;
                 left: calc(50% - 2px);
                 width: 4px;
                 height: 100%;
-            }
-            .travel-stat {
-
-            }
+            }            
             .stop {
                 height: 30px;
                 text-align: center;
             }
+            .stop-info {
+                height: 30px;
+                text-wrap: nowrap;
+            }            
         `;
 
         content.id = "container";
@@ -150,9 +160,11 @@ class TransportMapCard extends HTMLElement {
             timelineContent += `
             <div class="travel">
                 <div class="travel-stat">${data.arrival}</div>
-                <div class="stop">O</div>
-                <div class="stop">O</div>
-                <div class="stop">O</div>
+                <div class="stops">
+                    <div class="stop">O</div>
+                    <div class="stop">O</div>
+                    <div class="stop">O</div>
+                </div>
                 <div class="travel-stat"> ${data.departure}</div>
             </div>`
         )
@@ -160,9 +172,9 @@ class TransportMapCard extends HTMLElement {
         timelineContent += `
             <div class="travel">
                 <div class="travel-stat"></div>
-                <div class="stop">estação final</div>
-                <div class="stop">estação</div>
-                <div class="stop">origem</div>
+                <div class="stop-info">estação final</div>
+                <div class="stop-info">estação</div>
+                <div class="stop-info">origem</div>
                 <div class="travel-stat"></div>
             </div>`
 
@@ -188,7 +200,7 @@ class TransportMapCard extends HTMLElement {
     }
 
     getCardSize() {
-        return 3;
+        return 7;
     }
 
     static getConfigElement() {
