@@ -101,23 +101,24 @@ class TransportMapCard extends HTMLElement {
 
     set hass(hass) {
         const config = this.config;
-        //const root = this.shadowRoot;
+        const root = this.shadowRoot;
         //const card = root.lastChild;
 
-        if (!this.content) {
-            this.innerHTML = `
-                <ha-card header="${config.title}">
-                    <div class="card-content"></div>
-                </ha-card>
-            `;
-            this.content = this.querySelector("div");
-        }
+        // if (!this.content) {
+        //     this.innerHTML = `
+        //         <ha-card header="${config.title}">
+        //             <div class="card-content"></div>
+        //         </ha-card>
+        //     `;
+        //     this.content = this.querySelector("div");
+        // }
 
         const entityId = this.config.entity;
         const state = hass.states[entityId];
         const stateStr = state ? state.state : "unavailable";
 
-        this.content.innerHTML = `
+        //this.content.innerHTML = `
+        let cardContent = `
             The state of ${entityId} is ${stateStr}!
             <br><br>
             travelDate: ${sampleData.travelDate} <br>
@@ -127,6 +128,8 @@ class TransportMapCard extends HTMLElement {
                 `${idx}: ${data.service} | ${data.departure} | ${data.arrival} | ${data.duration} <br>`
             )}            
         `;
+
+        root.getElementById('container').innerHTML = cardContent;
     }
 
     getCardSize() {
