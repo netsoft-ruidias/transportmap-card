@@ -94,13 +94,18 @@ class TransportMapCard extends HTMLElement {
             }
             .card-content {
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
             }
+            .timeline-content {
+                display: flex;
+                flex-direction: row;
+            }            
             .timeline {
                 display: flex;
                 flex-direction: column;
                 position: relative;
-                width: 10px;
+                width: 20px;
+                margin: 10px;
             }
             .timeline::after {
                 background-color: #e17b77;
@@ -123,6 +128,22 @@ class TransportMapCard extends HTMLElement {
         this.config = cardConfig;
     }
 
+    renderStats = (data) =>  `
+        <div>travelDate: ${data.travelDate}</div>
+        <div>departureStation: ${data.departureStation} </div>
+        <div>arrivalStation: ${data.arrivalStation}</div>
+    `;
+
+    renderTimeline = (data) => {
+        let timelineContent = ``;
+
+        sampleData.outwardTrips.map((data, idx) => 
+            timelineContent += `<div class="timeline">${idx}: ${data.service} | ${data.departure} | ${data.arrival} | ${data.duration} </div>`
+        )
+
+        return timelineContent;
+    }
+
     set hass(hass) {
         const config = this.config;
         const root = this.shadowRoot;
@@ -132,25 +153,32 @@ class TransportMapCard extends HTMLElement {
         const state = hass.states[entityId];
         const stateStr = state ? state.state : "unavailable";
 
-        //this.content.innerHTML = `
-        let cardContent = `
-            <div class="timeline"></div>
-            <div class="timeline"></div>
-            <div class="timeline"></div>
+        // let cardContent = `
+        //     <div class="timeline"></div>
+        //     <div class="timeline"></div>
+        //     <div class="timeline"></div>
 
-            <div>The state of ${entityId} is ${stateStr}!</div>
+        //     <div>The state of ${entityId} is ${stateStr}!</div>
             
-            <div>travelDate: ${sampleData.travelDate} </div>
-            <div>departureStation: ${sampleData.departureStation} </div>
-            <div>arrivalStation: ${sampleData.arrivalStation} </div>
-            <div>
-            ${sampleData.outwardTrips.map((data, idx) => 
-                `<div>${idx}: ${data.service} | ${data.departure} | ${data.arrival} | ${data.duration} </div>`
-            )}
-            </div>         
+        //     <div>travelDate: ${sampleData.travelDate} </div>
+        //     <div>departureStation: ${sampleData.departureStation} </div>
+        //     <div>arrivalStation: ${sampleData.arrivalStation} </div>
+        //     <div>
+        //     ${sampleData.outwardTrips.map((data, idx) => 
+        //         `<div>${idx}: ${data.service} | ${data.departure} | ${data.arrival} | ${data.duration} </div>`
+        //     )}
+        //     </div>         
+        // `;
+        //
+        // root.getElementById('container').innerHTML = cardContent;
+        root.getElementById('container').innerHTML = `
+            <div class="stats">
+                ${this.renderStats(sampleData)}
+            </div>
+            <div class="timeline-content">
+                ${this.renderTimeline(sampleData.outwardTrips)}
+            </div>
         `;
-
-        root.getElementById('container').innerHTML = cardContent;
     }
 
     getCardSize() {
