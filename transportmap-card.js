@@ -85,16 +85,16 @@ class TransportMapCard extends HTMLElement {
 
         const cardConfig = Object.assign({}, config);
 
-        //const card = document.createElement('ha-card');
-        //const content = document.createElement('div');
-        //const style = document.createElement('style');
+        const card = document.createElement('ha-card');
+        const content = document.createElement('div');
+        const style = document.createElement('style');
 
-        //content.id = "container";
+        content.id = "container";
 
         cardConfig.title ? card.header = cardConfig.title : null;
-        //card.appendChild(content);
-        //card.appendChild(style);
-        //root.appendChild(card);
+        card.appendChild(content);
+        card.appendChild(style);
+        root.appendChild(card);
 
         this.config = cardConfig;
     }
