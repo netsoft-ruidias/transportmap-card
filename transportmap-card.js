@@ -88,6 +88,15 @@ class TransportMapCard extends HTMLElement {
         const card = document.createElement('ha-card');
         const content = document.createElement('div');
         const style = document.createElement('style');
+        style.textContent = `
+            ha-card {
+                /* sample css */
+            }
+            .card-content {
+                display: flex;
+                flex-direction: row;
+            }
+        `;
 
         content.id = "container";
         content.className = "card-content";
@@ -120,14 +129,16 @@ class TransportMapCard extends HTMLElement {
 
         //this.content.innerHTML = `
         let cardContent = `
-            The state of ${entityId} is ${stateStr}!
-            <br><br>
-            travelDate: ${sampleData.travelDate} <br>
-            departureStation: ${sampleData.departureStation} <br>
-            arrivalStation: ${sampleData.arrivalStation} <br><br>
+            <div>The state of ${entityId} is ${stateStr}!</div>
+            
+            <div>travelDate: ${sampleData.travelDate} </div>
+            <div>departureStation: ${sampleData.departureStation} </div>
+            <div>arrivalStation: ${sampleData.arrivalStation} </div>
+            <div>
             ${sampleData.outwardTrips.map((data, idx) => 
-                `${idx}: ${data.service} | ${data.departure} | ${data.arrival} | ${data.duration} <br>`
-            )}            
+                `<div>${idx}: ${data.service} | ${data.departure} | ${data.arrival} | ${data.duration} </div>`
+            )}
+            </div>         
         `;
 
         root.getElementById('container').innerHTML = cardContent;
