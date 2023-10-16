@@ -96,6 +96,20 @@ class TransportMapCard extends HTMLElement {
                 display: flex;
                 flex-direction: row;
             }
+            .timeline {
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                width: 10px;
+            }
+            .timeline::after {
+                background-color: #e17b77;
+                content: '';
+                position: absolute;
+                left: calc(50% - 2px);
+                width: 4px;
+                height: 100%;
+            }            
         `;
 
         content.id = "container";
@@ -114,21 +128,16 @@ class TransportMapCard extends HTMLElement {
         const root = this.shadowRoot;
         //const card = root.lastChild;
 
-        // if (!this.content) {
-        //     this.innerHTML = `
-        //         <ha-card header="${config.title}">
-        //             <div class="card-content"></div>
-        //         </ha-card>
-        //     `;
-        //     this.content = this.querySelector("div");
-        // }
-
         const entityId = this.config.entity;
         const state = hass.states[entityId];
         const stateStr = state ? state.state : "unavailable";
 
         //this.content.innerHTML = `
         let cardContent = `
+            <div class="timeline"></div>
+            <div class="timeline"></div>
+            <div class="timeline"></div>
+
             <div>The state of ${entityId} is ${stateStr}!</div>
             
             <div>travelDate: ${sampleData.travelDate} </div>
