@@ -1,13 +1,20 @@
-# Indentation and spacing
-indent_size = 2
-indent_style = space
-tab_width = 2
+# EditorConfig is awesome: https://EditorConfig.org
 
-# New line preferences
+# top-most EditorConfig file
+root = true
+
+[*]
 end_of_line = crlf
 insert_final_newline = false
+charset = utf-8
+
+[*.{js,py}]
+charset = utf-8
+
+[*.js]
+indent_size = 2
+indent_style = space
 
 [*.json]
-# Indentation and spacing
 indent_size = 4
 indent_style = space
