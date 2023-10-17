@@ -1,3 +1,9 @@
+import {
+  LitElement,
+  html,
+  css
+} from "https://unpkg.com/lit-element@2.0.1/lit-element.js?module";
+
 console.info(
   `%c  Transport Map Card  %c ${'v0.0.11'} `,
   'color: orange; font-weight: bold; background: black',
